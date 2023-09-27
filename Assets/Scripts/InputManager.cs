@@ -38,11 +38,13 @@ public class InputManager : MonoBehaviour {
         Vector2 horizontal = movement.HorizontalMovement.ReadValue<Vector2>();
         horizontalMoveAction?.Invoke(horizontal);
 
-        float sprinting = movement.Sprint.ReadValue<float>();
-        sprintAction?.Invoke(sprinting);
-
         float crouching = movement.Crouch.ReadValue<float>();
         crouchAction?.Invoke(crouching);
+
+        if(crouching == 0) {
+            float sprinting = movement.Sprint.ReadValue<float>();
+            sprintAction?.Invoke(sprinting);
+        }
     }
 
 }
