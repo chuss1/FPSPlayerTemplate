@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f225b76a781c44965896e6d0d8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 25
+  mouseSensitivity: 150
 --- !u!1 &3379469932035368933
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,13 +218,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3379469932035368933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1775259999533933044}
-  - {fileID: 1125453547782889292}
   - {fileID: 3360513554011404264}
+  - {fileID: 1125453547782889292}
+  - {fileID: 1775259999533933044}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -304,13 +304,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   walkSpeedModifier: 1
-  runSpeedModifier: 2
+  sprintSpeedModifier: 2
   jumpForce: 400
-  groundCheckTransform: {fileID: 3360513554011404264}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  groundCheckDistance: 0.1
 --- !u!1 &4061267934164050716
 GameObject:
   m_ObjectHideFlags: 0

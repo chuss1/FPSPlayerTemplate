@@ -20,7 +20,7 @@ public class CameraLook : MonoBehaviour {
 
     private void Update() {
         Vector2 mouseXYDelta = inputManager.characterInput.CameraLook.Look.ReadValue<Vector2>()
-         * mouseSensitivity * Time.deltaTime;
+         * mouseSensitivity * Time.smoothDeltaTime;
 
          xRotation -= mouseXYDelta.y;
          xRotation = Mathf.Clamp(xRotation, -90f, 90f);

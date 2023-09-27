@@ -6,19 +6,24 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour {
     private InputManager inputManager;
     private Rigidbody rb;
+    private Transform groundCheckTransform;
+    private float groundCheckDistance = 0.1f;    
     private float originalSpeed;
     private bool isGrounded;
 
     [Header("Movement Settings")]
+    [Tooltip("The base speed of your character")]
     [SerializeField] private float moveSpeed;
+    [Tooltip("A modifier that multiplies your base Move Speed")]
     [SerializeField] private float walkSpeedModifier;
-    [SerializeField] private float runSpeedModifier;
+    [Tooltip("A modifier that will multiple your move speed when you are sprinting")]
+    [SerializeField] private float sprintSpeedModifier;
 
     [Header("Jump Settings")]
+    [Tooltip("This is the Power for your jump")]
     [SerializeField] private float jumpForce;
-    [SerializeField] private Transform groundCheckTransform;
+    [Tooltip("Include all the layers that you want your character to jump off of")]
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float groundCheckDistance = 0.1f;    
     
     private void OnEnable() {
         inputManager.horizontalMoveAction += HorizontalMovement;
@@ -37,6 +42,7 @@ public class CharacterMovement : MonoBehaviour {
     private void Awake() {
         TryGetComponent<InputManager>(out inputManager);
         TryGetComponent<Rigidbody>(out rb);
+        groundCheckTransform = transform.GetChild(0);
         originalSpeed = moveSpeed;
     }
 
@@ -59,7 +65,7 @@ public class CharacterMovement : MonoBehaviour {
         if(sprintFloat == 0) { // If the sprint button is not being pressed
             moveSpeed = originalSpeed * walkSpeedModifier;
         } else {
-            moveSpeed = originalSpeed * runSpeedModifier;
+            moveSpeed = originalSpeed * sprintSpeedModifier;
         }
     }
 
