@@ -7,6 +7,7 @@ public class CharacterMovement : MonoBehaviour {
     private InputManager inputManager;
     private Rigidbody rb;
     private Transform groundCheckTransform;
+    private Transform characterOrientation;
     private float groundCheckDistance = 0.25f;    
     private float originalSpeed;
     private bool isGrounded;
@@ -37,6 +38,7 @@ public class CharacterMovement : MonoBehaviour {
     [Tooltip("This variable will set your players scale to be what you set it to when your standing")]
     [SerializeField] private Vector3 standHeight;
 #endregion
+    
     private void OnEnable() {
         inputManager.horizontalMoveAction += HorizontalMovement;
         inputManager.sprintAction += Sprint;
@@ -55,6 +57,7 @@ public class CharacterMovement : MonoBehaviour {
         TryGetComponent<InputManager>(out inputManager);
         TryGetComponent<Rigidbody>(out rb);
         groundCheckTransform = transform.GetChild(0);
+        characterOrientation = transform.GetChild(1);
         originalSpeed = moveSpeed;
     }
 
@@ -66,7 +69,7 @@ public class CharacterMovement : MonoBehaviour {
 
     private void HorizontalMovement(Vector2 horizontalInput) {
 
-        Vector3 move = transform.forward * horizontalInput.y + transform.right * horizontalInput.x;
+        Vector3 move = characterOrientation.forward * horizontalInput.y + characterOrientation.right * horizontalInput.x;
         
         move *= moveSpeed;
 
