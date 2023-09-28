@@ -8,7 +8,9 @@ public class CharacterMovement : MonoBehaviour {
     private Rigidbody rb;
     private Transform groundCheckTransform;
     private Transform characterOrientation;
-    private float groundCheckDistance = 0.25f;    
+    private float downwardSpeedIncrement = 15.0f;
+    private float groundCheckDistance = 0.25f;
+    private float previousHeight;
     private float originalSpeed;
     private bool isGrounded;
 #region  Movement Settings
@@ -64,6 +66,17 @@ public class CharacterMovement : MonoBehaviour {
     private void Update() {
         // Perform the ground check using a raycast.
         isGrounded = Physics.OverlapSphere(groundCheckTransform.position, groundCheckDistance, groundLayer).Length > 0;
+
+        if(!isGrounded) {
+            float currentHeight = transform.position.y;
+            
+            if(currentHeight < previousHeight) {
+                //we are falling downward
+                Debug.Log("We are falling down");
+                rb.velocity += Vector3.down * downwardSpeedIncrement * Time.deltaTime;
+            }
+            previousHeight = currentHeight;
+        }
     }
 
 

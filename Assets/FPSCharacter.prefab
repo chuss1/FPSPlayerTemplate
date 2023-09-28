@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8725490186119930405}
   - component: {fileID: 2042652502338748486}
   - component: {fileID: 7740325066648242351}
+  - component: {fileID: 991862629946136370}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -92,6 +93,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89917883938943609}
   m_Enabled: 1
+--- !u!114 &991862629946136370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89917883938943609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9f225b76a781c44965896e6d0d8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputManager: {fileID: 6074728714311059412}
+  characterBody: {fileID: 8037975697670965120}
+  characterOrientation: {fileID: 7171554222523790616}
+  mouseSensitivity: 50
 --- !u!1 &137709327247629400
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,11 +164,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8037975697670965120}
+  - component: {fileID: 653648946854402493}
   - component: {fileID: 2884292492563024414}
   - component: {fileID: 2438815322236799564}
   - component: {fileID: 6074728714311059412}
   - component: {fileID: 1865619650085539092}
-  - component: {fileID: 653648946854402493}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -177,6 +194,29 @@ Transform:
   m_Father: {fileID: 969094930349346340}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &653648946854402493
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740400850419626953}
+  m_Material: {fileID: 13400000, guid: 3265cc98bda5fe74c9f09951885539b8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &2884292492563024414
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -208,7 +248,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740400850419626953}
   serializedVersion: 4
-  m_Mass: 2
+  m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -254,36 +294,13 @@ MonoBehaviour:
   moveSpeed: 8
   walkSpeedModifier: 1
   sprintSpeedModifier: 2
-  crouchSpeedModifier: 0.25
-  jumpForce: 1000
+  crouchSpeedModifier: 0.5
+  jumpForce: 900
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  crouchHeight: {x: 1, y: 1.5, z: 1}
+  crouchHeight: {x: 1, y: 0.5, z: 1}
   standHeight: {x: 1, y: 1, z: 1}
---- !u!136 &653648946854402493
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740400850419626953}
-  m_Material: {fileID: 13400000, guid: 3265cc98bda5fe74c9f09951885539b8, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &3037382283092001694
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 969094930349346340}
   m_Layer: 0
-  m_Name: PlayerContainer
+  m_Name: FPSCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,5 +561,5 @@ Transform:
   - {fileID: 7341438949519682370}
   - {fileID: 8037975697670965120}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
